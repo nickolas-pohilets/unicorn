@@ -1644,7 +1644,7 @@ static void object_instance_init(struct uc_struct *uc, Object *obj, void *opaque
 
 void register_types_object(struct uc_struct *uc)
 {
-    static TypeInfo interface_info = {
+    static TypeInfo const interface_info = {
         TYPE_INTERFACE,	// name
         NULL,
 
@@ -1665,7 +1665,7 @@ void register_types_object(struct uc_struct *uc)
         true,	// abstract
     };
 
-    static TypeInfo object_info = {
+    static TypeInfo const object_info = {
         TYPE_OBJECT,
         NULL,
 
