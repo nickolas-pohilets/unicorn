@@ -613,7 +613,7 @@ struct X86CPUDefinition {
     bool cache_info_passthrough;
 };
 
-static X86CPUDefinition builtin_x86_defs[] = {
+static const X86CPUDefinition builtin_x86_defs[] = {
     {
         "qemu64",
         4, 0x8000000A, 0,
@@ -1836,7 +1836,7 @@ static void x86_cpu_cpudef_class_init(struct uc_struct *uc, ObjectClass *oc, voi
     xcc->cpu_def = cpudef;
 }
 
-static void x86_register_cpudef_type(struct uc_struct *uc, X86CPUDefinition *def)
+static void x86_register_cpudef_type(struct uc_struct *uc, const X86CPUDefinition *def)
 {
     char *typename = x86_cpu_type_name(def->name);
     TypeInfo ti = {
@@ -1877,7 +1877,7 @@ void x86_cpudef_setup(void)
     static const char *model_with_versions[] = { "qemu32", "qemu64", "athlon" };
 
     for (i = 0; i < ARRAY_SIZE(builtin_x86_defs); ++i) {
-        X86CPUDefinition *def = &builtin_x86_defs[i];
+        const X86CPUDefinition *def = &builtin_x86_defs[i];
 
         /* Look for specific "cpudef" models that */
         /* have the QEMU version in .model_id */

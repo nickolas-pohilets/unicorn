@@ -27,7 +27,7 @@ void memory_region_allocate_system_memory(MemoryRegion *mr, Object *owner,
                                           const char *name,
                                           uint64_t ram_size);
 
-void qemu_register_machine(struct uc_struct *uc, QEMUMachine *m, const char *type_machine,
+void qemu_register_machine(struct uc_struct *uc, const QEMUMachine *m, const char *type_machine,
         void (*init)(struct uc_struct *uc, ObjectClass *oc, void *data));
 
 #define TYPE_MACHINE_SUFFIX "-machine"

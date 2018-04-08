@@ -46,7 +46,7 @@ static int pc_init_pci(struct uc_struct *uc, MachineState *machine)
     return pc_init1(uc, machine);
 }
 
-static QEMUMachine pc_i440fx_machine_v2_2 = {
+static const QEMUMachine pc_i440fx_machine_v2_2 = {
     "pc_piix",
     "pc-i440fx-2.2",
     pc_init_pci,
@@ -59,7 +59,7 @@ static QEMUMachine pc_i440fx_machine_v2_2 = {
 static void pc_generic_machine_class_init(struct uc_struct *uc, ObjectClass *oc, void *data)
 {
     MachineClass *mc = MACHINE_CLASS(uc, oc);
-    QEMUMachine *qm = data;
+    const QEMUMachine *qm = data;
 
     mc->family = qm->family;
     mc->name = qm->name;

@@ -43,7 +43,7 @@ static int mips_r4k_init(struct uc_struct *uc, MachineState *machine)
 
 void mips_machine_init(struct uc_struct *uc)
 {
-    static QEMUMachine mips_machine = {
+    static const QEMUMachine mips_machine = {
         NULL,
         "mips",
         mips_r4k_init,

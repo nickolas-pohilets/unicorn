@@ -127,7 +127,7 @@ void qemu_system_shutdown_request(void)
 static void machine_class_init(struct uc_struct *uc, ObjectClass *oc, void *data)
 {
     MachineClass *mc = MACHINE_CLASS(uc, oc);
-    QEMUMachine *qm = data;
+    const QEMUMachine *qm = data;
 
     mc->family = qm->family;
     mc->name = qm->name;
@@ -138,7 +138,7 @@ static void machine_class_init(struct uc_struct *uc, ObjectClass *oc, void *data
     mc->arch = qm->arch;
 }
 
-void qemu_register_machine(struct uc_struct *uc, QEMUMachine *m, const char *type_machine,
+void qemu_register_machine(struct uc_struct *uc, const QEMUMachine *m, const char *type_machine,
         void (*init)(struct uc_struct *uc, ObjectClass *oc, void *data))
 {
     char *name = g_strconcat(m->name, TYPE_MACHINE_SUFFIX, NULL);

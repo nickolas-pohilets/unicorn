@@ -49,7 +49,7 @@ static int sun4u_init(struct uc_struct *uc, MachineState *machine)
 
 void sun4u_machine_init(struct uc_struct *uc)
 {
-    static QEMUMachine sun4u_machine = {
+    static const QEMUMachine sun4u_machine = {
         NULL,
         "sun4u",
         sun4u_init,

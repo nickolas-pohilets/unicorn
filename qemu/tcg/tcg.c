@@ -110,7 +110,7 @@ static void tcg_out_tb_init(TCGContext *s);
 static void tcg_out_tb_finalize(TCGContext *s);
 
 
-TCGOpDef tcg_op_defs_org[] = {
+const TCGOpDef tcg_op_defs_org[] = {
 #define DEF(s, oargs, iargs, cargs, flags) { #s, oargs, iargs, cargs, iargs + oargs + cargs, flags },
 #include "tcg-opc.h"
 #undef DEF

@@ -64,11 +64,14 @@ static int machvirt_init(struct uc_struct *uc, MachineState *machine)
 
 void machvirt_machine_init(struct uc_struct *uc)
 {
-    static QEMUMachine machvirt_a15_machine = { 0 };
-    machvirt_a15_machine.name = "virt",
-    machvirt_a15_machine.init = machvirt_init,
-    machvirt_a15_machine.is_default = 1,
-    machvirt_a15_machine.arch = UC_ARCH_ARM64,
-
+    static const QEMUMachine machvirt_a15_machine = {
+        NULL,          // family
+        "virt",        // name
+        machvirt_init, // init
+        NULL,          // reset
+        0,             // max_cpus
+        1,             // is_default
+        UC_ARCH_ARM64  // arch
+    };
     qemu_register_machine(uc, &machvirt_a15_machine, TYPE_MACHINE, NULL);
 }
