@@ -696,7 +696,7 @@ void object_ref(Object *obj)
     if (!obj) {
         return;
     }
-    atomic_inc(&obj->ref);
+    obj->ref++;
 }
 
 void object_unref(struct uc_struct *uc, Object *obj)
@@ -707,7 +707,7 @@ void object_unref(struct uc_struct *uc, Object *obj)
     g_assert(obj->ref > 0);
 
     /* parent always holds a reference to its children */
-    if (atomic_fetch_dec(&obj->ref) == 1) {
+    if (1 == --obj->ref) {
         object_finalize(uc, obj);
     }
 }
