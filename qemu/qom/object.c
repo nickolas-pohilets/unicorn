@@ -707,7 +707,7 @@ void object_unref(struct uc_struct *uc, Object *obj)
     g_assert(obj->ref > 0);
 
     /* parent always holds a reference to its children */
-    if (1 == --obj->ref) {
+    if (1 == obj->ref--) {
         object_finalize(uc, obj);
     }
 }
